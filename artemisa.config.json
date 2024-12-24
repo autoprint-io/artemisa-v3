@@ -1,0 +1,9 @@
+{
+  "appDirectory": "../myApp",
+  "defaultModel": "gpt-4",
+  "promptsRepo": "modules/",
+  "plugins": {
+    "repoInspector": true,
+    "codeMerger": false
+  }
+}

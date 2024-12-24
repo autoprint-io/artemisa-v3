@@ -1,0 +1,61 @@
+# Windsurf Rules para Artemisa v0.3
+
+## Directrices Generales
+- **Idioma**: Responde siempre en español.
+- **Tono**: Usa un tono profesional y enfocado, pero no excesivamente técnico.
+- **Formato**: Proporciona ejemplos claros de código siempre que sea necesario.
+- **Prioridad de Archivo**:
+  - Prioriza el análisis y edición de archivos dentro de `core/`, `modules/` y `templates/`.
+
+## Contexto y Configuración
+- **Contexto Principal**:
+  - Considera como contexto principal los archivos `artemisa.config.json`, `bin/artemisa.ts` y los comandos dentro de `core/commands/`.
+  - Usa `artemisa.config.json` como referencia para sugerencias relacionadas con configuración o directorios.
+- **Archivos Críticos**:
+  - Si se trabaja en un módulo, referencia las subcarpetas de `modules/<moduleName>/`.
+  - Para scaffolding o pipelines, prioriza las rutas de `modules/<moduleName>/pipelines/` y `modules/<moduleName>/scaffolding/`.
+
+## Estilo de Código
+- **Estructura del Código**:
+  - Asegúrate de que el código cumple con las convenciones de TypeScript (strict mode) y respeta la configuración de `tsconfig.json`.
+  - Utiliza nombres descriptivos y consistentes para variables, funciones y clases.
+- **Comentarios**:
+  - Genera comentarios útiles para cualquier nueva función creada.
+  - Usa comentarios en bloques para describir cambios significativos.
+- **Librerías**:
+  - Prioriza el uso de dependencias ya declaradas en `package.json`.
+  - No sugieras nuevas librerías externas salvo que sea absolutamente necesario y acorde con el proyecto.
+
+## Reglas Específicas para Módulos
+- **Pipeline de Módulos**:
+  - Si se trabaja en un pipeline, referencia los pasos (`steps`) en archivos como `stepsScaffolding.ts`, `stepsPromptIA.ts` y `stepsBuildAndTest.ts`.
+  - Sugiere nuevos pasos dentro de `Pipeline.steps` solo si el contexto lo requiere.
+- **Prompts de IA**:
+  - Al trabajar con prompts (ej. `orders.md`), asegura que sean claros y reutilizables.
+  - Si se generan nuevas lógicas, guarda los resultados en `logs/` para trazabilidad.
+
+## Tareas Recurrentes
+- **Inicialización de Proyectos**:
+  - Al trabajar con `initProject.ts`, valida siempre la existencia de plantillas en `templates/baseProject/`.
+  - Sugiere comandos claros para instalar dependencias y correr el servidor (`npm install`, `npm run dev`).
+- **Análisis de Repositorios**:
+  - Para inspección de repositorios (`inspectRepo.ts`), valida rutas y profundiad usando scripts como `analyzeTree.sh`.
+  - Guarda siempre los resultados de análisis en la carpeta `logs/`.
+
+## Prácticas Recomendadas
+- **Manejo de Logs**:
+  - Asegúrate de que todos los resultados importantes (análisis, respuestas de IA, inspecciones) se guarden en la carpeta `logs/`.
+- **Configuración Modular**:
+  - Usa y ajusta `artemisa.config.json` para controlar la ubicación de directorios o activación de plugins (`repoInspector`, `codeMerger`).
+- **Scaffolding**:
+  - Si generas nuevos scaffolds, mantén consistencia con la estructura base en `templates/baseProject/`.
+
+## Prioridad y Conflictos
+1. Prioriza las reglas relacionadas con módulos si estás trabajando en `modules/<moduleName>/`.
+2. Las configuraciones de `artemisa.config.json` tienen prioridad sobre configuraciones por defecto.
+3. En caso de conflicto entre reglas globales y locales, solicita confirmación al usuario.
+
+## Excepciones
+- Ignora cambios en archivos de configuración secundarios como `package-lock.json` y `node_modules/`.
+- No propongas cambios en archivos que no sean relevantes al flujo actual de trabajo.
+
